@@ -2,3 +2,16 @@ login:
   headline: Sign in with Github
   subhead: come aboard
   signin: Sign In
+
+layout:
+  header:
+    title: Github Insights
+
+insights:
+  languages:
+    waitingRepos: 'Waiting repos from octocat'
+  activity:
+    push:
+      title: 'Created {commit_count} {commit_count, plural, =1 {commit} other {commits}}  in {repo_count} {repo_count, plural, =1 {repository} other {repositories}}'
+    pullrequest:
+      title: 'Opened {pr_count} pull {pr_count, plural, =1 {request} other {requests}}  in {repo_count} {repo_count, plural, =1 {repository} other {repositories}}'

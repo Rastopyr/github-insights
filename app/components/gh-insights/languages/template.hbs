@@ -1,0 +1,35 @@
+<div class="layout layout-column layout-padding">
+  {{#power-select
+    options=repos
+    selected=selectedRepo
+    loadingMessage=(t 'insights.languages.waitingRepos')
+    onchange=(action selectRepo)
+    as | repo |
+  }}
+    {{repo.fullName}}
+  {{/power-select}}
+
+
+
+  {{#if (and selectedRepo repoStats)}}
+    {{high-charts
+      mode=mode
+      chartOptions=chartOptions
+      content=chartData}}
+  {{else}}
+    <div class="layout layout-column layout-align-center-center">
+      {{#if getStats.isRunning}}
+        Receiving stats from Octocat
+
+        {{ui-blocks/spinner}}
+      {{else}}
+        Choose repo!
+      {{/if}}
+
+
+    </div>
+
+
+  {{/if}}
+
+</div>

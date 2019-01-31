@@ -1,3 +1,7 @@
-{{yield (hash
-  header=(component 'Layout/Header')
-)}}
+{{#paper-content}}
+  {{!-- <div class="layout-column"> --}}
+    {{yield (hash
+      header=(component 'Layout/Header')
+    )}}
+  {{!-- </div> --}}
+{{/paper-content}}

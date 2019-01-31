@@ -1,0 +1,24 @@
+
+{{#paper-card as |card|}}
+  {{#card.media src=user.avatarUrl}}
+    <div class="card-media">
+      <img class="flex-100" src="{{user.avatarUrl}}" alt="{{user.login}}">
+    </div>
+  {{/card.media}}
+
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}}
+        <div>
+          {{user.login}}          
+        </div>
+
+        {{user.name}}
+      {{/text.headline}}
+
+      {{#text.subhead}}
+        {{user.company}}
+      {{/text.subhead}}
+    {{/title.text}}
+  {{/card.title}}
+{{/paper-card}}

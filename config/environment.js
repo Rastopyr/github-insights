@@ -20,6 +20,20 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    API: {},
+
+    torii: {
+      allowUnsafeRedirect: true,
+      sessionServiceName: 'session',
+      providers: {
+        'github-oauth2': {
+          apiKey: process.env.GITHUB_CLIENT_ID,
+          redirectUri: 'http://localhost:4200',
+          scope: 'repo user',
+        }
+      }
     }
   };
 
@@ -28,6 +42,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.API.URL = 'http://localhost:8080';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -48,8 +63,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.API.URL = 'https://gh-insights.com';
     // here you can enable a production-specific feature
   }
+
+  ENV.torii.providers['github-oauth2'].tokenExchangeUri = `${ENV.API.URL}/api/token`;
 
   return ENV;
 };

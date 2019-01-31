@@ -1,25 +1,27 @@
-<PaperCard as | Card |>
-  <Card.title as | Title |>
-    <Title.text as | Text |>
-      <Text.headline> {{t 'login.headline'}} </Text.headline>
-      <Text.subhead> {{t 'login.subhead'}} </Text.subhead>
-    </Title.text>
+<div class="layout-row layout-align-center-center">
+  <div local-class="login-card" class="flex-40">
+    <PaperCard as | Card |>
+      <Card.title as | Title |>
+        <Title.text as | Text |>
+          <Text.headline> {{t 'login.headline'}} </Text.headline>
+          <Text.subhead> {{t 'login.subhead'}} </Text.subhead>
+        </Title.text>
 
-    {{Title.media
-      size="md"
-      src="assets/images/founding-father.jpg"
-      alt="Sign in with Github"
-      title="Sign in with Github"
-    }}
-  </Card.title>
+        {{Title.media
+          size="md"
+          src="assets/images/founding-father.jpg"
+          alt="Sign in with Github"
+          title="Sign in with Github"
+        }}
+      </Card.title>
 
-  <Card.actions class="layout-row layout-align-start-center">
-    {{#paper-button onClick=(action authorize) }}
-      {{t 'login.signin'}}
-    {{/paper-button}}
-    {{!-- <PaperButton onClick={{action authorize}}>
-    </PaperButton> --}}
-  </Card.actions>
-</PaperCard>
+      <Card.actions class="layout-row layout-align-end-center">
+        {{#paper-button onClick=(action authorize) }}
+          {{t 'login.signin'}}
+        {{/paper-button}}
+      </Card.actions>
+    </PaperCard>
+  </div>
+</div>
 
 {{yield}}

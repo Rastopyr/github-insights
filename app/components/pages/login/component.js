@@ -1,12 +1,20 @@
-import { inject } from '@ember/service';
 import Component from '@ember/component';
+import { inject as service } from '@ember-decorators/service';
+import { localClassNames } from 'ember-css-modules';
 
+@localClassNames('login-page')
 export default class PagesLoginComponent extends Component {
 
-  // session = inject();
+  @service session;
+  @service store;
 
-  authorize() {
-    console.log('authorize');
-    // this.session.authorize('authorizer:github');
+  async authorize() {
+    const { store, session } = this;
+
+    await this.session.authenticate('authenticator:torii', 'github');
+
+    const currentUser = await store.findRecord('github-user', '#');
+
+    session.set('currentUser', currentUser);
   }
 }

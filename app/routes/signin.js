@@ -1,8 +1,4 @@
 import Route from '@ember/routing/route';
+import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-route-mixin';
 
-export default class SigninRoute extends Route {
-  constructor() {
-    super();
-    this.classNames = ['layout'];
-  }
-}
+export default Route.extend(UnauthenticatedRouteMixin);

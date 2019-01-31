@@ -1,0 +1,44 @@
+{{#paper-list
+  name="You Activity"
+}}
+  {{#let groupedActivites.push as | group |}}
+    {{#paper-subheader}}
+      {{t
+          (concat 'insights.activity.push.title')
+          commit_count=group.commit_count
+          repo_count=group.repo_count}}
+    {{/paper-subheader}}
+
+    {{#each group.events as | event |}}
+      <div class="md-list-item-text"></div>
+    {{/each}}
+  {{/let}}
+
+  {{paper-divider}}
+
+  {{#let groupedActivites.pullrequest as | group |}}
+    {{#paper-subheader}}
+      {{t
+          (concat 'insights.activity.pullrequest.title')
+          pr_count=group.pr_count
+          repo_count=group.repo_count}}
+    {{/paper-subheader}}
+
+    {{#each group.events as | event |}}
+      <div class="md-list-item-text"></div>
+    {{/each}}
+  {{/let}}
+
+  {{!-- {{#let groupedActivites.watch as | group |}}
+    {{#paper-subheader}}
+      {{t
+          (concat 'insights.activity.push.title')
+          follow_count=group.follow_count}}
+    {{/paper-subheader}}
+
+    {{#each group.events as | event |}}
+      <div class="md-list-item-text"></div>
+    {{/each}}
+  {{/let}} --}}
+
+{{/paper-list}}

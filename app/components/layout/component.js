@@ -1,8 +1,5 @@
 import Component from '@ember/component';
+import { localClassNames } from 'ember-css-modules';
 
-export default class LayoutComponent extends Component {
-  constructor(...args) {
-    super(...args);
-    this.classNames = ['layout'];
-  }
-}
+@localClassNames('layout')
+export default class LayoutComponent extends Component {}
