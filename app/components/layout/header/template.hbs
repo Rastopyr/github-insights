@@ -3,7 +3,19 @@
       <h2>
         {{t 'layout.header.title'}}
       </h2>
+
+      {{#if session.isAuthenticated}}
+        <span class="flex"></span>
+
+        {{#paper-button
+          onClick=(action logout)
+        }}
+          {{t 'login.logout'}}
+        {{/paper-button}}
+      {{/if}}
   </toolbar.tools>
+
+
 </PaperToolbar>
 
 {{yield}}
